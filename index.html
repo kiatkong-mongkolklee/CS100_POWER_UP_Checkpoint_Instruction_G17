@@ -4,12 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Personal Learning Portfolio</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
 
@@ -27,7 +31,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#Create">Create Portfolio</a>
+                        <a class="nav-link" href="#portfolio-section">Create Portfolio</a>
                     </li>
 
                     <li class="nav-item">
@@ -39,71 +43,326 @@
         </div>
     </nav>
 
-    <main class="container my-4">
-        <!-- Error area (Issue #4) -->
+    <main class="container my-4" id="home">
+
+        <!-- Error Area -->
         <div id="error-toast" class="alert alert-danger d-none" role="alert"></div>
 
-        <div class="row g-4">
-            <!-- Create Portfolio form goes here -->
-            <section class="col-lg-6" id="portfolio-section">
-                <div class="card shadow-sm h-100">
+        <!-- Create Portfolio -->
+        <div class="row justify-content-center">
+
+            <section class="col-lg-10" id="portfolio-section">
+
+                <div class="card shadow-sm">
+
                     <div class="card-header bg-primary text-white">
-                        <h5 class="card-title mb-0">Create Portfolio</h5>
+                        <h4 class="card-title mb-0">Create Portfolio</h4>
                     </div>
+
                     <div class="card-body">
-                        <!-- เลือก / สลับ Portfolio -->
+
+                        <!-- Select Portfolio -->
                         <div class="mb-3 pb-3 border-bottom">
-                            <label for="portfolio-select" class="form-label fw-bold">Select Portfolio</label>
+
+                            <label for="portfolio-select" class="form-label fw-bold">
+                                Select Portfolio
+                            </label>
+
                             <select id="portfolio-select" class="form-select">
                                 <option value="portfolio_1">Portfolio 1</option>
                                 <option value="portfolio_2">Portfolio 2</option>
                             </select>
+
                         </div>
 
+                        <!-- ONE FORM FOR EVERYTHING -->
                         <form id="portfolio-profile-form">
+
+                            <!-- Portfolio Information -->
+                            <h5 class="mb-3">Portfolio Information</h5>
+
                             <div class="mb-3">
-                                <label for="profile-name" class="form-label">Display Name</label>
+
+                                <label for="profile-name" class="form-label">
+                                    Display Name
+                                </label>
+
                                 <input type="text" class="form-control" id="profile-name" required>
-                                <div class="invalid-feedback">Please enter a display name.</div>
+
+                                <div class="invalid-feedback">
+                                    Please enter a display name.
+                                </div>
+
                             </div>
+
                             <div class="mb-3">
-                                <label for="what-i-enjoy" class="form-label">What I Enjoy</label>
+
+                                <label for="what-i-enjoy" class="form-label">
+                                    What I Enjoy
+                                </label>
+
                                 <textarea class="form-control" id="what-i-enjoy" rows="2" required></textarea>
-                                <div class="invalid-feedback">Please fill out what you enjoy.</div>
+
+                                <div class="invalid-feedback">
+                                    Please fill out what you enjoy.
+                                </div>
+
                             </div>
+
                             <div class="mb-3">
-                                <label for="what-ive-tried" class="form-label">What I've Tried</label>
+
+                                <label for="what-ive-tried" class="form-label">
+                                    What I've Tried
+                                </label>
+
                                 <textarea class="form-control" id="what-ive-tried" rows="2" required></textarea>
-                                <div class="invalid-feedback">Please fill out what you've tried.</div>
+
+                                <div class="invalid-feedback">
+                                    Please fill out what you've tried.
+                                </div>
+
                             </div>
+
                             <div class="mb-3">
-                                <label for="what-curious" class="form-label">What I'm Curious About</label>
+
+                                <label for="what-curious" class="form-label">
+                                    What I'm Curious About
+                                </label>
+
                                 <textarea class="form-control" id="what-curious" rows="2" required></textarea>
-                                <div class="invalid-feedback">Please fill out what you are curious about.</div>
+
+                                <div class="invalid-feedback">
+                                    Please fill out what you are curious about.
+                                </div>
+
                             </div>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-success flex-grow-1" type="submit">Create portfolio</button>
-                                <button class="btn btn-outline-dark" type="reset">Clear</button>
+
+                            <hr class="my-4">
+
+                            <!-- Portfolio Item Information -->
+                            <section id="item-section">
+
+                                <h5 class="mb-3">Add Portfolio Item</h5>
+
+                                <!-- Basic Information -->
+
+                                <div class="mb-3">
+
+                                    <label for="item-title" class="form-label">
+                                        Title
+                                    </label>
+
+                                    <input type="text" class="form-control" id="item-title" required>
+
+                                    <div class="invalid-feedback"></div>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label for="item-type" class="form-label">
+                                        Type
+                                    </label>
+
+                                    <select class="form-select" id="item-type" required>
+
+                                        <option value="" selected disabled>
+                                            Select Type
+                                        </option>
+
+                                        <option value="Project">Project</option>
+                                        <option value="Course">Course</option>
+                                        <option value="Activity">Activity</option>
+                                        <option value="Competition">Competition</option>
+                                        <option value="Other">Other</option>
+
+                                    </select>
+
+                                    <!-- Add JS here เวลาเลือก other ให้สามาถพิมพ์ได้ -->
+                                    <input type="text" class="form-control mt-2 d-none" id="other-type"
+                                        placeholder="Enter your type">
+                                    <!-- Add JS here เวลาเลือก other ให้สามาถพิมพ์ได้ -->
+                                    <div class="invalid-feedback"></div>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label for="item-date" class="form-label">
+                                        Date
+                                    </label>
+
+                                    <input type="date" class="form-control" id="item-date" required>
+
+                                    <div class="invalid-feedback"></div>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label for="item-role" class="form-label">
+                                        Role
+                                    </label>
+
+                                    <input type="text" class="form-control" id="item-role" required>
+
+                                    <div class="invalid-feedback"></div>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label for="item-description" class="form-label">
+                                        Description
+                                    </label>
+
+                                    <textarea class="form-control" id="item-description" rows="3" required></textarea>
+
+                                    <div class="invalid-feedback"></div>
+
+                                </div>
+
+                                <hr class="my-4">
+
+
+
+                                <!-- Skills -->
+                                <div class="mb-3">
+
+                                    <label for="item-skills" class="form-label">
+                                        Skills
+                                    </label>
+
+                                    <input type="text" class="form-control" id="item-skills"
+                                        placeholder="HTML, CSS, JavaScript" required>
+
+                                    <div class="invalid-feedback"></div>
+
+                                </div>
+
+                                <hr class="my-4">
+
+                                <!-- Reflection -->
+                                <h6 class="mb-3">Reflection</h6>
+
+                                <div class="mb-3">
+
+                                    <label for="what-i-did" class="form-label">
+                                        What I Did
+                                    </label>
+
+                                    <textarea class="form-control" id="what-i-did" rows="2" required></textarea>
+
+                                    <div class="invalid-feedback"></div>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label for="what-i-learned" class="form-label">
+                                        What I Learned
+                                    </label>
+
+                                    <textarea class="form-control" id="what-i-learned" rows="2" required></textarea>
+
+                                    <div class="invalid-feedback"></div>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label for="challenge" class="form-label">
+                                        Challenge
+                                    </label>
+
+                                    <textarea class="form-control" id="challenge" rows="2" required></textarea>
+
+                                    <div class="invalid-feedback"></div>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label for="next-step" class="form-label">
+                                        Next Step
+                                    </label>
+
+                                    <textarea class="form-control" id="next-step" rows="2" required></textarea>
+
+                                    <div class="invalid-feedback"></div>
+
+                                </div>
+
+                                <hr class="my-4">
+
+                                <!-- Evidence -->
+                                <h5 class="mb-3">Evidence</h5>
+
+                                <!-- Evidence URL -->
+                                <div class="mb-3">
+                                    <label for="item-evidence" class="form-label">
+                                        Evidence URL
+                                    </label>
+
+                                    <input type="url" class="form-control" id="item-evidence"
+                                        placeholder="https://example.com">
+
+                                    <div class="invalid-feedback"></div>
+                                </div>
+
+                                <!-- Photo Evidence -->
+                                <div class="mb-3">
+                                    <label for="item-photo" class="form-label">
+                                        Upload Photo
+                                    </label>
+
+                                    <input type="file" class="form-control" id="item-photo" accept="image/*" multiple>
+                                </div>
+
+                                <!-- File Evidence -->
+                                <div class="mb-3">
+                                    <label for="item-file" class="form-label">
+                                        Upload Files
+                                    </label>
+
+                                    <input type="file" class="form-control" id="item-file"
+                                        accept=".pdf,.doc,.docx,.ppt,.pptx,.zip" multiple>
+                                </div>
+
+                            </section>
+
+                            <!-- Buttons at the bottom -->
+                            <div class="d-flex gap-2 mt-4">
+
+                                <button type="submit" class="btn btn-primary flex-grow-1">
+                                    Create Portfolio
+                                </button>
+
+                                <button type="reset" class="btn btn-outline-dark">
+                                    Clear
+                                </button>
+
                             </div>
+
                         </form>
+
                     </div>
                 </div>
+
             </section>
 
-            <!-- Add Item form goes here (Issue #3) -->
-            <section class="col-lg-6" id="item-section">
-            </section>
         </div>
 
         <hr class="my-5">
 
-        <!-- Display area goes here (Issue #5) -->
-        <section id="display-section">
-        </section>
     </main>
 
+    <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Your JavaScript -->
     <script src="js/app.js"></script>
+
 </body>
 
 </html>
