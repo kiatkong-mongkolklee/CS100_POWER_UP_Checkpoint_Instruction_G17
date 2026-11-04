@@ -45,13 +45,12 @@ body {
 .form-control, .form-select {
     background-color: #222222;
     border-color: #4A4A46;
-    color: #FAF9F5 !important;
+    color: #C2C0B6 !important;
 }
 
 .form-control::placeholder {
-    color: #FAF9F5 !important;
+    color: #C2C0B6 !important;
 }
-
 
 .btn-primary {
     background-color: #D97757;
