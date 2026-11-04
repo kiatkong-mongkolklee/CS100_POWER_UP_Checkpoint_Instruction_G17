@@ -62,19 +62,16 @@ body {
     border-color: #C6613F;
 }
 
-.portfolio-card {
-    background-color: #30302E;
-    border-color: #4A4A46;
-    
-}
-
-.item-card {
+.portfolio-card , .item-card {
     background-color: #30302E;
     border-color: #4A4A46;
 }
 
 .skill-tag {
-    background-color: #D97757;
     color: #FAF9F5;
 }
 
+.btn-outline-dark {
+    color: #a04848;
+    border-color: #943c3c;
+}
