@@ -75,3 +75,9 @@ body {
     color: #a04848;
     border-color: #943c3c;
 }
+
+@media (max-width: 768px) {
+    img {
+        max-width: 100%;
+    }
+}
