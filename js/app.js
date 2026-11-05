@@ -291,7 +291,116 @@ function saveItem(data) {
     }
 
     clearItemFields();
+    renderView();
     showMessage("Portfolio saved!", "success");
+}
+
+const NO_INFO = "No information available.";
+const emptyHtml = document.getElementById("view-items").innerHTML;
+
+// Change special characters so user text cannot break our HTML
+function esc(text) {
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+// Make the HTML card of one item
+function itemCard(item) {
+    const r = item.reflection;
+
+    let skills = "";
+    for (let i = 0; i < item.skills.length; i++) {
+        skills += '<span class="badge text-bg-secondary skill-tag me-1">' + esc(item.skills[i]) + "</span>";
+    }
+
+    let links = "";
+    for (let i = 0; i < item.evidence.length; i++) {
+        const url = esc(item.evidence[i]);
+        links += '<li><a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + "</a></li>";
+    }
+
+    let photos = "";
+    for (let i = 0; i < item.photos.length; i++) {
+        photos += "<li>" + esc(item.photos[i]) + "</li>";
+    }
+    if (photos !== "") {
+        photos = '<h6 class="mt-3">Photos</h6><ul>' + photos + "</ul>";
+    }
+
+    let files = "";
+    for (let i = 0; i < item.files.length; i++) {
+        files += "<li>" + esc(item.files[i]) + "</li>";
+    }
+    if (files !== "") {
+        files = '<h6 class="mt-3">Files</h6><ul>' + files + "</ul>";
+    }
+
+    let note = "";
+    if (photos !== "" || files !== "") {
+        note = '<p class="text-body-secondary small">Only file names are saved. Files are not uploaded yet.</p>';
+    }
+
+    return `
+        <div class="col-12 col-lg-6">
+            <div class="card h-100 item-card">
+                <div class="card-header"><h5 class="mb-0">${esc(item.title)}</h5></div>
+                <div class="card-body">
+                    <p class="text-body-secondary small">${esc(item.type)} · ${esc(item.date)} · ${esc(item.role)}</p>
+                    <p>${esc(item.description)}</p>
+                    <div class="mb-3">${skills}</div>
+                    <p class="mb-1"><b>What I did:</b> ${esc(r.whatIDid)}</p>
+                    <p class="mb-1"><b>What I learned:</b> ${esc(r.whatILearned)}</p>
+                    <p class="mb-1"><b>Challenge:</b> ${esc(r.challenge)}</p>
+                    <p class="mb-1"><b>Next step:</b> ${esc(r.nextStep)}</p>
+                    <h6 class="mt-3">Evidence</h6>
+                    <ul>${links}</ul>
+                    ${photos}
+                    ${files}
+                    ${note}
+                </div>
+            </div>
+        </div>`;
+}
+
+// Show the selected portfolio in the "View" section
+function renderView() {
+    const p = portfolios[viewSelect.value];
+
+    if (p === undefined) {
+        document.getElementById("view-profile-name").textContent = "Portfolio Name";
+        document.getElementById("view-enjoy").textContent = NO_INFO;
+        document.getElementById("view-tried").textContent = NO_INFO;
+        document.getElementById("view-curious").textContent = NO_INFO;
+        document.getElementById("item-count").textContent = "0 Items";
+        document.getElementById("view-items").innerHTML = emptyHtml;
+        return;
+    }
+
+    document.getElementById("view-profile-name").textContent = p.displayName;
+    document.getElementById("view-enjoy").textContent = p.whatIEnjoy;
+    document.getElementById("view-tried").textContent = p.whatIveTried;
+    document.getElementById("view-curious").textContent = p.whatImCuriousAbout;
+
+    const count = p.items.length;
+    if (count === 1) {
+        document.getElementById("item-count").textContent = "1 Item";
+    } else {
+        document.getElementById("item-count").textContent = count + " Items";
+    }
+
+    if (count === 0) {
+        document.getElementById("view-items").innerHTML = emptyHtml;
+    } else {
+        let html = "";
+        for (let i = 0; i < p.items.length; i++) {
+            html += itemCard(p.items[i]);
+        }
+        document.getElementById("view-items").innerHTML = html;
+    }
 }
 
 form.addEventListener("submit", function (event) {
@@ -307,3 +416,4 @@ form.addEventListener("submit", function (event) {
 });
 
 toggleOtherType();
+renderView();
