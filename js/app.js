@@ -223,6 +223,77 @@ function makeItem(data, number) {
     };
 }
 
+const STORAGE_KEY = "portfolios";
+
+let portfolios = loadData();
+
+// Read data from localStorage. If there is nothing, return {}
+function loadData() {
+    const text = localStorage.getItem(STORAGE_KEY);
+    if (text === null) {
+        return {};
+    }
+    try {
+        return JSON.parse(text);
+    } catch (error) {
+        return {};
+    }
+}
+
+// Save data to localStorage. Return true if OK, false if storage is full
+function saveData() {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(portfolios));
+        return true;
+    } catch (error) {
+        portfolios = loadData();
+        return false;
+    }
+}
+
+// Clear only the item inputs (keep the profile inputs)
+function clearItemFields() {
+    const fields = document.querySelectorAll("#item-section input, #item-section textarea, #item-section select");
+    for (let i = 0; i < fields.length; i++) {
+        if (fields[i].tagName === "SELECT") {
+            fields[i].selectedIndex = 0;
+        } else {
+            fields[i].value = "";
+        }
+    }
+    toggleOtherType();
+}
+
+// Save the profile and the new item in the selected portfolio
+function saveItem(data) {
+    const id = createSelect.value;
+    const old = portfolios[id];
+
+    let items = [];
+    if (old !== undefined) {
+        items = old.items;
+    }
+
+    items.push(makeItem(data, items.length + 1));
+
+    portfolios[id] = {
+        id: id,
+        displayName: data.displayName,
+        whatIEnjoy: data.whatIEnjoy,
+        whatIveTried: data.whatIveTried,
+        whatImCuriousAbout: data.whatImCuriousAbout,
+        items: items
+    };
+
+    if (saveData() === false) {
+        showMessage("Could not save: browser storage is full.", "danger");
+        return;
+    }
+
+    clearItemFields();
+    showMessage("Portfolio saved!", "success");
+}
+
 form.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -232,8 +303,7 @@ form.addEventListener("submit", function (event) {
     }
 
     const data = readForm();
-    const item = makeItem(data, 1);
-    console.log(item);
+    saveItem(data);
 });
 
 toggleOtherType();
