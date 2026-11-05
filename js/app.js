@@ -403,6 +403,36 @@ function renderView() {
     }
 }
 
+// When the user picks a portfolio: fill the profile inputs, clear the item inputs
+function selectPortfolio(id) {
+    const p = portfolios[id];
+    createSelect.value = id;
+    viewSelect.value = id;
+
+    if (p === undefined) {
+        document.getElementById("profile-name").value = "";
+        document.getElementById("what-i-enjoy").value = "";
+        document.getElementById("what-ive-tried").value = "";
+        document.getElementById("what-curious").value = "";
+    } else {
+        document.getElementById("profile-name").value = p.displayName;
+        document.getElementById("what-i-enjoy").value = p.whatIEnjoy;
+        document.getElementById("what-ive-tried").value = p.whatIveTried;
+        document.getElementById("what-curious").value = p.whatImCuriousAbout;
+    }
+
+    clearItemFields();
+    clearErrors();
+    renderView();
+}
+
+createSelect.addEventListener("change", function () {
+    selectPortfolio(createSelect.value);
+});
+viewSelect.addEventListener("change", function () {
+    selectPortfolio(viewSelect.value);
+});
+
 form.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -416,4 +446,4 @@ form.addEventListener("submit", function (event) {
 });
 
 toggleOtherType();
-renderView();
+selectPortfolio(createSelect.value);
