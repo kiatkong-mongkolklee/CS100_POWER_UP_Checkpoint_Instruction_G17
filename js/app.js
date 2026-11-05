@@ -201,6 +201,28 @@ form.addEventListener("reset", function () {
     }, 0);
 });
 
+// Make one portfolio item object from the form data
+function makeItem(data, number) {
+    return {
+        id: "item" + String(number).padStart(3, "0"),
+        title: data.title,
+        type: data.type,
+        date: data.date,
+        role: data.role,
+        description: data.description,
+        skills: toList(data.skills),
+        reflection: {
+            whatIDid: data.whatIDid,
+            whatILearned: data.whatILearned,
+            challenge: data.challenge,
+            nextStep: data.nextStep
+        },
+        evidence: toList(data.evidence),
+        photos: data.photos,
+        files: data.files
+    };
+}
+
 form.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -210,7 +232,8 @@ form.addEventListener("submit", function (event) {
     }
 
     const data = readForm();
-    console.log(data);
+    const item = makeItem(data, 1);
+    console.log(item);
 });
 
 toggleOtherType();
