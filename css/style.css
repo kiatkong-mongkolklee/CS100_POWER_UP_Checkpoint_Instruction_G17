@@ -10,6 +10,8 @@
     ฟิล Claude ;)
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+
 body {
     background-color: #2c2c2b;
     color: #FAF9F5;
@@ -79,5 +81,169 @@ body {
 @media (max-width: 768px) {
     img {
         max-width: 100%;
+    }
+}
+
+/* Global */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: #18191D;
+    color: #F5F5F5;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* Highlight Text */
+.text-orange {
+    color: #FF7849;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #111216 !important;
+    border-bottom: 1px solid #303238;
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    color: #FF7849 !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.nav-link {
+    color: #D0D0D0 !important;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #FF7849 !important;
+}
+
+/* Section */
+section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/* Cards */
+.card {
+    background-color: #22242A;
+    border: 1px solid #393B43;
+    border-radius: 12px;
+    color: #F5F5F5;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    border-color: #FF7849;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(255, 120, 73, 0.12);
+}
+
+.card-header {
+    background-color: #292B32;
+    color: #FF7849;
+    border-bottom: 1px solid #393B43;
+    font-weight: 500;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #FF7849;
+    border-color: #FF7849;
+    color: #18191D;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #FF946E;
+    border-color: #FF946E;
+    color: #18191D;
+}
+
+/* Form */
+.form-control,
+.form-select {
+    background-color: #191A1F;
+    border: 1px solid #454750;
+    color: #F5F5F5;
+    border-radius: 8px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #191A1F;
+    border-color: #FF7849;
+    color: #F5F5F5;
+    box-shadow: 0 0 0 0.2rem rgba(255, 120, 73, 0.15);
+}
+
+.form-control::placeholder {
+    color: #999BA3;
+}
+
+/* Links */
+a {
+    transition: 0.3s ease;
+}
+
+/* Footer */
+footer {
+    background-color: #111216;
+    color: #A5A5A5;
+    border-top: 1px solid #303238;
+    padding: 25px;
+    text-align: center;
+}
+
+/* Responsive */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .card {
+        margin-bottom: 15px;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
