@@ -1,0 +1,35 @@
+{
+  "id": "portfolio_2",
+  "displayName": "Tae MongKol",
+  "whatIEnjoy": "Coding",
+  "whatIveTried": "CS100",
+  "whatImCuriousAbout": "PHP",
+  "items": [
+    {
+      "id": "item001",
+      "title": "How to Basic",
+      "type": "Project",
+      "date": "2026-11-05",
+      "role": "Admin",
+      "description": "Test Test Test",
+      "skills": [
+        "CSS"
+      ],
+      "reflection": {
+        "whatIDid": "Coding",
+        "whatILearned": "CSS",
+        "challenge": "PHP",
+        "nextStep": "Javascript"
+      },
+      "evidence": [
+        "https://github.com"
+      ],
+      "photos": [
+        "sample-photo-2.jpg"
+      ],
+      "files": [
+        "sample-doc-2.pdf"
+      ]
+    }
+  ]
+}

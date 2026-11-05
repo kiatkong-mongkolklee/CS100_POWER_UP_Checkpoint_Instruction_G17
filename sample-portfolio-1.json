@@ -1,0 +1,35 @@
+{
+  "id": "portfolio_1",
+  "displayName": "Adam Smith",
+  "whatIEnjoy": "Coding",
+  "whatIveTried": "CS100",
+  "whatImCuriousAbout": "Javascript",
+  "items": [
+    {
+      "id": "item001",
+      "title": "What When Why Who",
+      "type": "Activity",
+      "date": "2026-11-05",
+      "role": "Data Analyst",
+      "description": "Test Test Test",
+      "skills": [
+        "Javascript"
+      ],
+      "reflection": {
+        "whatIDid": "Coding",
+        "whatILearned": "Javascript",
+        "challenge": "everything",
+        "nextStep": "PHP"
+      },
+      "evidence": [
+        "https://github.com"
+      ],
+      "photos": [
+        "sample-photo-1.jpg"
+      ],
+      "files": [
+        "sample-doc-1.pdf"
+      ]
+    }
+  ]
+}
