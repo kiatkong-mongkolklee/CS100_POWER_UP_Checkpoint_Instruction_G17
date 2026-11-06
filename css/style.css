@@ -161,7 +161,7 @@ section {
 .card:hover {
     border-color: #FF7849;
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(255, 120, 73, 0.12);
+    box-shadow: 0 12px 30px rgba(255, 120, 73, 0.2);
 }
 
 .card-header {
@@ -219,6 +219,21 @@ footer {
     border-top: 1px solid #303238;
     padding: 25px;
     text-align: center;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #18191D;
+}
+::-webkit-scrollbar-thumb {
+    background: #393B43;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #FF7849;
 }
 
 /* Responsive */

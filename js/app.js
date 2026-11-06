@@ -446,14 +446,20 @@ viewSelect.addEventListener("change", function () {
 
 form.addEventListener("submit", async function (event) {
     event.preventDefault();
+    
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true; 
 
     if (validateForm() === false) {
         showMessage("Please check the highlighted fields. Nothing was saved.", "danger");
+        submitBtn.disabled = false;
         return;
     }
 
     const data = await readForm();
     saveItem(data);
+    
+    submitBtn.disabled = false;
 });
 
 toggleOtherType();
