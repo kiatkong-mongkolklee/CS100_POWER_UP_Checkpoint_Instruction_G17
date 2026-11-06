@@ -30,6 +30,34 @@
       "files": [
         "sample-doc-1.pdf"
       ]
+    },
+    {
+      "id": "item002",
+      "title": "Portfolio Web App Development",
+      "type": "Project",
+      "date": "2026-11-06",
+      "role": "Frontend Developer",
+      "description": "Built a personal portfolio web app with HTML, CSS, and JS.",
+      "skills": [
+        "HTML",
+        "CSS",
+        "Bootstrap"
+      ],
+      "reflection": {
+        "whatIDid": "Designed responsive UI and DOM manipulation logic",
+        "whatILearned": "LocalStorage management and form validation",
+        "challenge": "Handling state sync between select dropdowns",
+        "nextStep": "Add dark mode toggle logic"
+      },
+      "evidence": [
+        "https://github.com"
+      ],
+      "photos": [
+        "sample-photo-2.jpg"
+      ],
+      "files": [
+        "sample-doc-2.pdf"
+      ]
     }
   ]
 }

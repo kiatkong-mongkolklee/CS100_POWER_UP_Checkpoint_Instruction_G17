@@ -30,6 +30,33 @@
       "files": [
         "sample-doc-2.pdf"
       ]
+    },
+    {
+      "id": "item002",
+      "title": "Git Collaboration & Issue Tracking",
+      "type": "Activity",
+      "date": "2026-11-06",
+      "role": "Git Manager",
+      "description": "Practiced branch workflows, issues closing, and PR reviews.",
+      "skills": [
+        "Git",
+        "GitHub"
+      ],
+      "reflection": {
+        "whatIDid": "Created issues and linked commits with syntax Close #19",
+        "whatILearned": "Collaborative version control and issue assignment",
+        "challenge": "Resolving merge conflicts safely",
+        "nextStep": "Learn GitHub Actions CI/CD"
+      },
+      "evidence": [
+        "https://github.com"
+      ],
+      "photos": [
+        "sample-photo-1.jpg"
+      ],
+      "files": [
+        "sample-doc-1.pdf"
+      ]
     }
-  ] 
+  ]
 }
