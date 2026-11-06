@@ -1,142 +1,131 @@
 # Personal Learning Portfolio
 
-A small web app for keeping track of what you've done and what you learned from it. Everything is saved in the user's own browser `localStorage`, so there's no sign-up and no backend server or database.
+เว็บไซต์ Personal Learning Portfolio เป็น Web Application สำหรับสร้าง Portfolio ส่วนตัว เพื่อบันทึกประสบการณ์การเรียนรู้ ทักษะ สิ่งที่ได้ลงมือทำ และสิ่งที่ได้เรียนรู้จากแต่ละกิจกรรมหรือโปรเจกต์
 
-This document covers two things: **(1)** how to open the project, and **(2)** a detailed test plan — so that someone outside the team, or a grader, can follow it, open the page, and actually try out the system without asking the team anything extra (Issue #6).
+## 1. Project Description
 
-## Requirements
+เว็บไซต์นี้ช่วยให้ผู้ใช้สามารถสร้างและจัดการ Portfolio ของตนเองได้ โดยไม่จำเป็นต้องมีผลงานขนาดใหญ่ก่อนเริ่มต้น สามารถบันทึกประสบการณ์และพัฒนาการเรียนรู้ของตนเองได้อย่างเป็นระบบ ข้อมูลทั้งหมดถูกเก็บไว้ใน Local Storage ของเบราว์เซอร์ผู้ใช้เอง จึงไม่ต้องสมัครสมาชิกและไม่มีเซิร์ฟเวอร์หรือฐานข้อมูลฝั่งหลังบ้าน
 
-- Any modern web browser: Chrome, Edge, Firefox, or Safari
-- Internet connection **only the first time you open it**, since the page loads Bootstrap CSS/JS from a CDN (`cdn.jsdelivr.net`). After that, the browser caches it.
-- No need to install Node.js, a server, or any database.
+## 2. Technologies Used
 
-## Project structure
+* HTML5 – ใช้สร้างโครงสร้างเว็บไซต์
+* CSS3 – ใช้ตกแต่งและจัดรูปแบบเว็บไซต์
+* JavaScript (Vanilla JS) – ใช้จัดการข้อมูลและการทำงานต่าง ๆ ของเว็บไซต์
+* Bootstrap 5.3.3 – ใช้ช่วยในการออกแบบหน้าตาเว็บไซต์ (โหลดจาก CDN)
+* Local Storage – ใช้จัดเก็บข้อมูลภายใน Browser
+
+## 3. Project Structure
 
 ```
-index.html                 Main page (all the UI)
-css/style.css               Extra styling on top of Bootstrap
-js/app.js                   All the logic (form validation, saving/rendering data)
-sample-portfolio-1.json     Example portfolio data, for reference when filling in the test form
-sample-portfolio-2.json     A second example portfolio data set
-README.md                   This document
+CS100_POWER_UP_Checkpoint_Instruction_G17/
+│
+├── css/
+│   └── style.css
+│
+├── js/
+│   └── app.js
+│
+├── index.html
+├── sample-portfolio-1.json
+├── sample-portfolio-2.json
+└── README.md
 ```
 
-> Note: `sample-portfolio-*.json` are **example data to look at / copy into the form** only. The app does not have a feature to import a JSON file directly yet.
+## 4. Requirements
 
-## How to open the project
+ก่อนเปิดใช้งานเว็บไซต์ ควรมีสิ่งต่อไปนี้
 
-Pick whichever method is easiest — none of them require installing anything extra.
+* Web Browser เช่น Google Chrome, Microsoft Edge หรือ Firefox
+* โปรแกรม Visual Studio Code (แนะนำ)
+* Internet Connection สำหรับโหลด Bootstrap จาก CDN
 
-**Option 1 — Download as ZIP**
-1. Go to the repo on GitHub: `https://github.com/kiatkong-mongkolklee/CS100_POWER_UP_Checkpoint_Instruction_G17`
-2. Click the green **Code** button, then choose **Download ZIP**
-3. Extract the downloaded ZIP file
-4. Open the extracted folder and double-click **`index.html`**
-5. The page opens in your default browser (the URL will start with `file:///...`) — it's ready to use immediately, no commands needed
+## 5. How to Run the Website
 
-**Option 2 — Clone with Git**
-1. Open a terminal / command prompt
-2. Run:
-   ```
-   git clone https://github.com/kiatkong-mongkolklee/CS100_POWER_UP_Checkpoint_Instruction_G17.git
-   ```
-3. Go into the cloned folder and open `index.html` in a browser (double-click it, or right-click → Open with → pick a browser)
+**วิธีที่ 1: เปิดผ่าน Visual Studio Code (แนะนำ)**
 
-**Option 3 — Open with Live Server (optional, for VS Code users)**
-1. Open the project folder in VS Code
-2. Install the **Live Server** extension
-3. Right-click `index.html` → **Open with Live Server**
-4. The page opens at `http://127.0.0.1:5500/` (or a nearby port)
+1. ดาวน์โหลดโปรเจกต์จาก GitHub โดยกดปุ่ม Code และเลือก Download ZIP
+2. แตกไฟล์ ZIP ที่ดาวน์โหลดมา
+3. เปิดโปรแกรม Visual Studio Code
+4. เลือก File > Open Folder
+5. เลือกโฟลเดอร์โปรเจกต์ที่แตกไฟล์ไว้
+6. คลิกขวาที่ไฟล์ `index.html` แล้วเลือก Open with Live Server
+7. เว็บไซต์จะเปิดขึ้นใน Web Browser โดยอัตโนมัติ
 
-All three methods give the same result, since this is a single static page that runs entirely in the browser — there's no backend to start.
+**วิธีที่ 2: เปิดผ่าน Web Browser โดยตรง**
 
-## Detailed test steps
+1. ดาวน์โหลดและแตกไฟล์โปรเจกต์ (หรือ `git clone` repo นี้)
+2. เข้าไปในโฟลเดอร์โปรเจกต์ที่แตกไฟล์ไว้
+3. ดับเบิลคลิกไฟล์ `index.html`
+4. เว็บไซต์จะเปิดขึ้นใน Web Browser ทันที (ไม่ต้องรันคำสั่งใดๆ)
 
-Work through Test 1 → 10 in order to cover every main feature of the system. Each test lists the **steps** and the **expected result**.
+## 6. How to Test the Website
 
-### Test 1 — Create a new portfolio (happy path, everything filled in correctly)
-1. In the **Create Portfolio** section, select `Portfolio 1` in the **Select Portfolio** dropdown
-2. Fill in Display Name, What I Enjoy, What I've Tried, What I'm Curious About
-3. Scroll down to **Add Portfolio Item** and fill in every field: Title, Type (pick anything except Other), Date, Role, Description
-4. In the Skills field, type something like `HTML, CSS, JavaScript`
-5. Fill in all 4 Reflection fields (What I Did, What I Learned, Challenge, Next Step)
-6. In the Evidence URL field, type a link starting with `http://` or `https://`, e.g. `https://github.com`
-7. Click **Create Portfolio**
+สามารถทดลองใช้งานฟังก์ชันต่าง ๆ ของเว็บไซต์ได้ตามขั้นตอนดังนี้
 
-**Expected result:** a green "Portfolio saved!" message appears at the top. Scroll to **View Portfolio**, select `Portfolio 1` in its dropdown, and you'll see the profile info you entered plus the newly created item card, with the counter showing **"1 Item"**.
+### 6.1 Create Portfolio (พร้อม Item แรก)
 
-### Test 2 — Validation when fields are left empty
-1. Clear the form with the **Clear** button (or refresh the page)
-2. Leave some of the `required` fields empty (e.g. skip Display Name and Title) and click **Create Portfolio**
+ฟอร์มของเว็บไซต์นี้รวม "ข้อมูลโปรไฟล์" กับ "Portfolio Item แรก" ไว้ในฟอร์มเดียว ต้องกรอกให้ครบทั้งสองส่วนแล้วกดบันทึกพร้อมกัน
 
-**Expected result:** a red "Please check the highlighted fields. Nothing was saved." message appears. The empty fields get a red border with a message underneath (e.g. "Please enter a display name."), **no** new item is saved, and focus jumps to the first field with an error.
+1. เลือก Portfolio ในช่อง Select Portfolio (Portfolio 1 หรือ Portfolio 2)
+2. กรอก Display Name, What I Enjoy, What I've Tried, What I'm Curious About
+3. เลื่อนลงมากรอก Portfolio Item: Title, Type, Date, Role, Description
+4. กรอก Skills อย่างน้อย 1 รายการ (คั่นด้วยเครื่องหมายจุลภาค เช่น `HTML, CSS`)
+5. กรอก Reflection ให้ครบทั้ง 4 ส่วน: What I Did, What I Learned, Challenge, Next Step
+6. กรอก Evidence link อย่างน้อย 1 ลิงก์ โดยต้องขึ้นต้นด้วย `http://` หรือ `https://` (คั่นหลายลิงก์ด้วยจุลภาคได้เช่นกัน)
+7. กดปุ่ม **Create Portfolio**
+8. ตรวจสอบว่าข้อความ "Portfolio saved!" ขึ้น และ item ที่สร้างไปปรากฏในส่วน View Portfolio
 
-### Test 3 — Invalid date
-1. Fill in the form as in Test 1, but for the **Date** field, test a date that doesn't actually exist (the app checks this with `isValidDate`, e.g. February 31st) — you can test this via the browser dev tools if the native date picker won't let you type one — then click Create Portfolio
+### 6.2 Switch Between Portfolios
 
-**Expected result:** the Date field gets a red border with "Invalid date. Please use the format YYYY-MM-DD." and the form is not saved.
+* เปลี่ยน dropdown **Select Portfolio** เป็น Portfolio อีกอัน → ฟอร์มด้านบนจะโหลดข้อมูลโปรไฟล์ของ Portfolio นั้น (หรือว่างถ้ายังไม่เคยสร้าง) และ dropdown ในส่วน View Portfolio จะสลับตามโดยอัตโนมัติ
+* การแก้ไขโปรไฟล์ทำได้โดยแก้ข้อความในฟอร์มแล้วกด Create Portfolio อีกครั้ง (จะบันทึกโปรไฟล์ใหม่พร้อมเพิ่ม item ใหม่ไปด้วย)
 
-### Test 4 — Invalid evidence link
-1. Fill in the form as in Test 1, but in the **Evidence URL** field type something that isn't a link, e.g. `github.com` (no http/https) or `abcde`
-2. Click Create Portfolio
+> หมายเหตุ: เวอร์ชันนี้ยังไม่มีปุ่ม Edit/Delete สำหรับ Portfolio หรือ Item ที่สร้างไปแล้วโดยตรง
 
-**Expected result:** the Evidence field gets a red border saying the link is invalid and must start with `http://` or `https://`, and the form is not saved. Fix it to `https://github.com` and submit again — it should pass and save normally.
+### 6.3 Add Another Portfolio Item
 
-### Test 5 — Selecting Type "Other"
-1. Fill in the form as in Test 1, but for **Type** select **Other**
+1. เลือก Portfolio ที่ต้องการ (ข้อมูลโปรไฟล์จะโชว์อยู่แล้ว)
+2. กรอกข้อมูล Portfolio Item ใหม่ให้ครบตามข้อ 6.1 ข้อ 3-6
+3. กดปุ่ม Create Portfolio อีกครั้ง
+4. ตรวจสอบว่าตัวนับ Items ใน View Portfolio เพิ่มขึ้น และเห็น item การ์ดใหม่เพิ่มเข้ามา
 
-**Expected result:** a new text input appears for typing a custom type. If you leave it empty and click Create Portfolio, you get the error "Please type your own type." If you type something, e.g. `Hackathon`, and click Create Portfolio, it saves and the item card in View Portfolio shows `Hackathon` instead of the word "Other".
+### 6.4 Skills and Evidence (หลายรายการ)
 
-### Test 6 — Adding multiple items to the same portfolio
-1. Successfully create a first item as in Test 1 (you'll see the saved message, and the Add Portfolio Item fields clear automatically while the profile info above stays)
-2. Fill in a second item (no need to re-enter the profile) and click Create Portfolio again
+* ช่อง Skills และ Evidence ไม่มีปุ่มเพิ่ม/ลบช่องแยก แต่ให้พิมพ์หลายรายการในช่องเดียว คั่นด้วยเครื่องหมายจุลภาค เช่น `HTML, CSS, JavaScript` หรือ `https://github.com, https://example.com`
+* ระบบจะตัดช่องว่างและรายการซ้ำออกให้อัตโนมัติ
 
-**Expected result:** in View Portfolio, the counter now shows **"2 Items"** and you can see both item cards listed.
+### 6.5 Form Validation
 
-### Test 7 — Switching portfolios (Portfolio 1 ↔ Portfolio 2)
-1. Create data for `Portfolio 1` as in Test 1
-2. In the **Select Portfolio** dropdown (on the Create side), switch to `Portfolio 2`
+* ลองปล่อยช่องที่จำเป็น (required) ว่างไว้แล้วกด Create Portfolio → ช่องนั้นจะขึ้นกรอบแดงพร้อมข้อความแจ้ง และฟอร์มจะไม่ถูกบันทึก
+* ลองใส่วันที่ที่ไม่มีจริง หรือ Evidence link ที่ไม่ขึ้นต้นด้วย `http://`/`https://` → ระบบจะแจ้ง error และไม่บันทึกเช่นกัน
 
-**Expected result:** the profile form above clears immediately (since Portfolio 2 has no data yet). Fill in new profile + item data for Portfolio 2 and click Create Portfolio, then switch the dropdown back to `Portfolio 1` — Portfolio 1's data should still be there completely intact, not overwritten or lost. The **View Portfolio** dropdown switches along with it automatically (both dropdowns stay in sync).
+### 6.6 Clear Form
 
-### Test 8 — The Clear button
-1. Fill in some profile and item fields (don't submit)
-2. Click the **Clear** button
+* กดปุ่ม **Clear** จะล้างเฉพาะช่องในส่วน Add Portfolio Item (Title, Type, Date, ..., Evidence, Photo, File) ส่วนข้อมูลโปรไฟล์ด้านบนจะไม่ถูกล้าง
 
-**Expected result:** the fields in the **Add Portfolio Item** section (Title, Type, Date, Role, ... through Evidence/Photo/File) are all cleared. The profile fields above (Display Name, What I Enjoy, etc.) keep whatever the currently selected portfolio has (they are not cleared), and any red error borders from before disappear too.
+### 6.7 Upload Photo / File Evidence
 
-### Test 9 — Uploading photos/files (Issue #20)
-1. Fill in the form as in Test 1
-2. In the **Upload Photo** field, select one or more image files (.jpg/.png)
-3. In the **Upload Files** field, select a document, e.g. a .pdf or .docx
-4. Click Create Portfolio
+1. ที่ช่อง Upload Photo เลือกไฟล์รูปภาพได้ (เลือกได้หลายไฟล์)
+2. ที่ช่อง Upload Files เลือกไฟล์เอกสาร เช่น .pdf, .docx
+3. กด Create Portfolio
+4. ตรวจสอบว่าการ์ด item ใน View Portfolio แสดงรูปภาพจริง (thumbnail) ในหัวข้อ Photos และลิงก์ดาวน์โหลดไฟล์จริงในหัวข้อ Files
 
-**Expected result:** the item card in View Portfolio shows a **Photos** section with actual thumbnail images of what was uploaded, not just filenames, and a **Files** section with a filename link that actually downloads the original file when clicked. (Fixed per Issue #20, where images/files previously didn't show up at all.)
+### 6.8 Data Storage Test
 
-> Note: files are stored as Data URLs inside `localStorage`, which has a quota of roughly 5MB per site. If the total size of uploaded files is too large, you'll see "Could not save: browser storage is full." — try smaller files.
+1. สร้าง Portfolio และเพิ่ม Portfolio Item อย่างน้อย 1 รายการ
+2. Refresh หน้าเว็บไซต์ (F5)
+3. ตรวจสอบว่าข้อมูลที่บันทึกไว้ (โปรไฟล์และ item ทั้งหมด) ยังคงแสดงผลอยู่ครบถ้วน
 
-### Test 10 — Data persistence (localStorage)
-1. Create at least one portfolio item as in Test 1
-2. **Refresh the page** (F5), or close the tab and reopen `index.html`
+> หมายเหตุ: เว็บไซต์จัดเก็บข้อมูลด้วย Local Storage ข้อมูลจึงถูกเก็บไว้ในเบราว์เซอร์และอุปกรณ์ที่ใช้งานเท่านั้น ไม่ได้จัดเก็บบน Server กลาง
 
-**Expected result:** all the data (profile and items you created) is still there without needing to re-enter anything, since it's stored in that browser's `localStorage`.
+## 7. Notes
 
-> Limitation: data is tied to the **specific browser + machine** that created it. Opening it in a different browser, a different computer, or Incognito/Private mode won't show the existing data, and clearing the browser's site data will delete it permanently.
+* ควรเชื่อมต่ออินเทอร์เน็ตเพื่อให้ Bootstrap CDN ทำงานได้ (จำเป็นแค่ตอนเปิดครั้งแรก เบราว์เซอร์จะแคชไว้ให้ในครั้งถัดไป)
+* ไม่จำเป็นต้องติดตั้ง Backend หรือ Database เพิ่มเติม
+* หากเปิดเว็บไซต์บนอุปกรณ์หรือ Browser อื่น จะไม่สามารถเห็นข้อมูล Local Storage จากอุปกรณ์เดิมได้โดยอัตโนมัติ
+* Local Storage มีโควตาจำกัดประมาณ 5MB ต่อเว็บไซต์ การแนบรูป/ไฟล์ขนาดใหญ่หรือจำนวนมากอาจทำให้บันทึกไม่ได้ (จะขึ้นข้อความ "Could not save: browser storage is full.")
+* รองรับ Portfolio ได้ 2 รายการ (Portfolio 1, Portfolio 2) ตาม dropdown ที่มีให้
 
-## Sample test data
+## 8. GitHub Repository
 
-You can use the data in `sample-portfolio-1.json` and `sample-portfolio-2.json` as example input. From the first file:
-
-- Display Name: `Adam Smith`
-- What I Enjoy: `Coding`
-- What I've Tried: `CS100`
-- What I'm Curious About: `Javascript`
-- Item Title: `What When Why Who`, Type: `Activity`, Date: `2026-11-05`, Role: `Data Analyst`
-- Skills: `Javascript`
-- Evidence: `https://github.com`
-
-## Known limitations
-
-- There is no backend/database — data lives only in the user's browser and does not sync across devices or accounts.
-- `localStorage` has a limited quota (roughly 5MB per domain); attaching many or large photos/files may cause saving to fail.
-- Only 2 portfolios are supported (Portfolio 1, Portfolio 2), matching the dropdown options provided.
+Repository: https://github.com/kiatkong-mongkolklee/CS100_POWER_UP_Checkpoint_Instruction_G17
