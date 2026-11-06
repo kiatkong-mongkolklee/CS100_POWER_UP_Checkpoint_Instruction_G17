@@ -17,17 +17,32 @@ function toggleOtherType() {
 
 typeSelect.addEventListener("change", toggleOtherType);
 
-// Take the names of the selected files -> ["pic1.png", "pic2.png"]
-function getFileNames(input) {
-    const names = [];
+// Read one File into a data URL ({ name, dataUrl }) so it can be saved
+// to localStorage and shown later as an <img> or a download link.
+function readFile(file) {
+    return new Promise(function (resolve, reject) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            resolve({ name: file.name, dataUrl: reader.result });
+        };
+        reader.onerror = function () {
+            reject(reader.error);
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+// Read every selected file in a <input type="file"> into [{ name, dataUrl }]
+async function readFilesAsDataUrls(input) {
+    const files = [];
     for (let i = 0; i < input.files.length; i++) {
-        names.push(input.files[i].name);
+        files.push(await readFile(input.files[i]));
     }
-    return names;
+    return files;
 }
 
 // Read every value from the form and return them in one object
-function readForm() {
+async function readForm() {
     let type = typeSelect.value;
     if (type === "Other") {
         type = otherType.value.trim();
@@ -49,8 +64,8 @@ function readForm() {
         challenge: document.getElementById("challenge").value.trim(),
         nextStep: document.getElementById("next-step").value.trim(),
         evidence: document.getElementById("item-evidence").value,
-        photos: getFileNames(document.getElementById("item-photo")),
-        files: getFileNames(document.getElementById("item-file"))
+        photos: await readFilesAsDataUrls(document.getElementById("item-photo")),
+        files: await readFilesAsDataUrls(document.getElementById("item-file"))
     };
 }
 
@@ -325,23 +340,20 @@ function itemCard(item) {
 
     let photos = "";
     for (let i = 0; i < item.photos.length; i++) {
-        photos += "<li>" + esc(item.photos[i]) + "</li>";
+        const photo = item.photos[i];
+        photos += '<img src="' + esc(photo.dataUrl) + '" alt="' + esc(photo.name) + '" class="item-photo-thumb me-2 mb-2">';
     }
     if (photos !== "") {
-        photos = '<h6 class="mt-3">Photos</h6><ul>' + photos + "</ul>";
+        photos = '<h6 class="mt-3">Photos</h6><div class="d-flex flex-wrap">' + photos + "</div>";
     }
 
     let files = "";
     for (let i = 0; i < item.files.length; i++) {
-        files += "<li>" + esc(item.files[i]) + "</li>";
+        const file = item.files[i];
+        files += '<li><a href="' + esc(file.dataUrl) + '" download="' + esc(file.name) + '">' + esc(file.name) + "</a></li>";
     }
     if (files !== "") {
         files = '<h6 class="mt-3">Files</h6><ul>' + files + "</ul>";
-    }
-
-    let note = "";
-    if (photos !== "" || files !== "") {
-        note = '<p class="text-body-secondary small">Only file names are saved. Files are not uploaded yet.</p>';
     }
 
     return `
@@ -360,7 +372,6 @@ function itemCard(item) {
                     <ul>${links}</ul>
                     ${photos}
                     ${files}
-                    ${note}
                 </div>
             </div>
         </div>`;
@@ -433,7 +444,7 @@ viewSelect.addEventListener("change", function () {
     selectPortfolio(viewSelect.value);
 });
 
-form.addEventListener("submit", function (event) {
+form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     if (validateForm() === false) {
@@ -441,7 +452,7 @@ form.addEventListener("submit", function (event) {
         return;
     }
 
-    const data = readForm();
+    const data = await readForm();
     saveItem(data);
 });
 
